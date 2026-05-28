@@ -3,37 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abrindo Realidade Aumentada...</title>
+    <title>Visualizador Cocoa Form 1:1</title>
     <style>
-        body { background-color: #1a1a1a; color: white; font-family: sans-serif; text-align: center; padding-top: 50px; }
+        body { 
+            background-color: #121212; 
+            color: #ffffff; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            text-align: center; 
+            padding: 40px 20px;
+            margin: 0;
+        }
+        h2 { color: #d4af37; margin-bottom: 10px; font-size: 24px; }
+        p { color: #a0a0a0; font-size: 16px; margin-bottom: 40px; }
+        .btn {
+            display: block;
+            background-color: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            padding: 18px;
+            margin: 15px auto;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            max-width: 280px;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+        }
+        .btn-ios { border-color: #ffffff; background-color: #222; }
+        .btn-android { border-color: #d4af37; background-color: #1f1a10; }
     </style>
 </head>
 <body>
-    <h2>Carregando tamanho real...</h2>
-    <p>A câmera do seu celular deve abrir em instantes.</p>
 
-    <!-- Link secreto para o iPhone (Quick Look) -->
-    <a id="ios-link" rel="ar" href="https://github.com/Will3DMonkey/modelos3dm/raw/refs/heads/main/Cocoa%20form%20tamanhos%20personalizados.usdz"></a>
+    <h2>Cocoa Form 📐</h2>
+    <p>Escolha o sistema do seu celular para abrir a câmera em tamanho real (1:1):</p>
 
-    <script>
-        window.onload = function() {
-            // 1. Detecta se o usuário está usando iPhone/iPad
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    <!-- Botão do iPhone: Usa a tag rel="ar" oficial da Apple que você testou e deu certo -->
+    <a class="btn btn-ios" rel="ar" href="https://github.com/Will3DMonkey/modelos3dm/raw/refs/heads/main/Cocoa%20form%20tamanhos%20personalizados.usdz">
+        🍏 Usar no iPhone
+    </a>
 
-            if (isIOS) {
-                // Dispara a câmera nativa do iPhone
-                document.getElementById('ios-link').click();
-            } else {
-                // 2. Se for Android, dispara o Scene Viewer do Google em tamanho real (escala 1:1)
-                const glbUrl = "https://drive.google.com/uc?id=1lFrj5PTXcs1rTcg_WLHTn1_W2z2obOlT";
-                const title = "Cocoa Form Tamanho Real";
-                
-                // O link mestre que o Android usa para abrir a câmera direto sem travar
-                const androidIntent = `intent://arvr.google.com/scene-viewer/1.0?file=${encodeURIComponent(glbUrl)}&title=${encodeURIComponent(title)}&mode=ar_only&resizable=false#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;end;`;
-                
-                window.location.href = androidIntent;
-            }
-        };
-    </script>
+    <!-- Botão do Android: Abre o visualizador universal do Google usando o seu GLB limpo do Drive -->
+    <a class="btn btn-android" href="https://dashboard.modelviewer.dev/viewer?src=https://drive.google.com/uc?id=1lFrj5PTXcs1rTcg_WLHTn1_W2z2obOlT&ar=true&ar-scale=fixed">
+        🤖 Usar no Android
+    </a>
+
 </body>
 </html>
