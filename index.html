@@ -10,17 +10,29 @@
 </head>
 <body>
     <h2>Carregando tamanho real...</h2>
-    <p>A câmera do seu iPhone deve abrir em instantes.</p>
+    <p>A câmera do seu celular deve abrir em instantes.</p>
 
-    <!-- O link secreto que a Apple reconhece e abre a câmera direto -->
-    <a id="ar-link" rel="ar" href="https://github.com/Will3DMonkey/modelos3dm/raw/refs/heads/main/Cocoa%20form%20tamanhos%20personalizados.usdz">
-        <img src="" alt="">
-    </a>
+    <!-- Link secreto para o iPhone (Quick Look) -->
+    <a id="ios-link" rel="ar" href="https://github.com/Will3DMonkey/modelos3dm/raw/refs/heads/main/Cocoa%20form%20tamanhos%20personalizados.usdz"></a>
 
     <script>
-        // Dispara o clique invisível assim que a página carrega
         window.onload = function() {
-            document.getElementById('ar-link').click();
+            // 1. Detecta se o usuário está usando iPhone/iPad
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+            if (isIOS) {
+                // Dispara a câmera nativa do iPhone
+                document.getElementById('ios-link').click();
+            } else {
+                // 2. Se for Android, dispara o Scene Viewer do Google em tamanho real (escala 1:1)
+                const glbUrl = "https://drive.google.com/uc?id=1lFrj5PTXcs1rTcg_WLHTn1_W2z2obOlT";
+                const title = "Cocoa Form Tamanho Real";
+                
+                // O link mestre que o Android usa para abrir a câmera direto sem travar
+                const androidIntent = `intent://arvr.google.com/scene-viewer/1.0?file=${encodeURIComponent(glbUrl)}&title=${encodeURIComponent(title)}&mode=ar_only&resizable=false#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;end;`;
+                
+                window.location.href = androidIntent;
+            }
         };
     </script>
 </body>
