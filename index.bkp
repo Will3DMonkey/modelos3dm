@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador Cocoa Form 1:1</title>
+    <style>
+        body { 
+            background-color: #121212; 
+            color: #ffffff; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            text-align: center; 
+            padding: 40px 20px;
+            margin: 0;
+        }
+        h2 { color: #d4af37; margin-bottom: 10px; font-size: 24px; }
+        p { color: #a0a0a0; font-size: 16px; margin-bottom: 40px; }
+        .btn {
+            display: block;
+            background-color: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            padding: 18px;
+            margin: 15px auto;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            max-width: 280px;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+        }
+        .btn-ios { border-color: #ffffff; background-color: #222; }
+        .btn-android { border-color: #d4af37; background-color: #1f1a10; }
+    </style>
+</head>
+<body>
+
+    <h2>Cocoa Form 📐</h2>
+    <p>Escolha o sistema do seu celular para abrir a câmera em tamanho real (1:1):</p>
+
+    <!-- Botão do iPhone (Mantido o que deu certo!) -->
+    <a class="btn btn-ios" rel="ar" href="https://github.com/Will3DMonkey/modelos3dm/raw/refs/heads/main/Cocoa%20form%20tamanhos%20personalizados.usdz">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'></svg>" style="display:none;">
+        🍏 Usar no iPhone
+    </a>
+
+    <!-- Botão do Android Corrigido: Dispara o motor do Google direto sem depender do site externo -->
+    <a class="btn btn-android" href="https://arvr.google.com/scene-viewer/1.0?file=https://raw.githubusercontent.com/Will3DMonkey/modelos3dm/main/Cocoa%20form%20tamanhos%20personalizados.glb&mode=ar_only&resizable=false">
+        🤖 Usar no Android
+    </a>
+
+</body>
+</html>
